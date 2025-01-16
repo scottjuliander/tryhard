@@ -13,20 +13,6 @@
             overflow: hidden;
             background: black;
         }
-        .background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-        }
-        .background-video iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
         .slide {
             width: 100vw;
             height: 100vh;
@@ -41,13 +27,25 @@
             background: rgba(0, 0, 0, 0.6);
             border: 5px solid #ff9800;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        .slide video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
         }
         .slide h1, .slide h2 {
             margin: 0 0 1rem;
+            z-index: 1;
         }
         .slide p, .slide ul {
             margin: 1rem 0;
             line-height: 1.6;
+            z-index: 1;
         }
         .slide ul {
             list-style-type: disc;
@@ -74,20 +72,6 @@
         }
         .navigation button:hover {
             background: #e68a00;
-        }
-        .start-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #ff9800;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 10;
         }
 
         @media (max-width: 768px) {
@@ -116,16 +100,16 @@
 </head>
 <body>
 
-<div class="background-video">
-    <iframe id="video" src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ&playsinline=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
-</div>
-
-<button class="start-button" id="startButton" onclick="startPresentation()">Starta presentation</button>
-
 <div class="slide" id="slide1" style="transform: translateX(0%);">
+    <video autoplay loop muted playsinline>
+        <source src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ" type="video/mp4">
+    </video>
     <h1>BON – Vision, Förbättringar och Förslag</h1>
 </div>
 <div class="slide" id="slide2" style="transform: translateX(100%);">
+    <video autoplay loop muted playsinline>
+        <source src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ" type="video/mp4">
+    </video>
     <h2>Koncept och 5-års vision</h2>
     <p>BON riktar sig till:</p>
     <ul>
@@ -136,6 +120,9 @@
     </ul>
 </div>
 <div class="slide" id="slide3" style="transform: translateX(200%);">
+    <video autoplay loop muted playsinline>
+        <source src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ" type="video/mp4">
+    </video>
     <h2>Nuvarande styrkor och svagheter</h2>
     <p><strong>Styrkor:</strong></p>
     <ul>
@@ -150,6 +137,9 @@
     </ul>
 </div>
 <div class="slide" id="slide4" style="transform: translateX(300%);">
+    <video autoplay loop muted playsinline>
+        <source src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ" type="video/mp4">
+    </video>
     <h2>Förslag på förbättringar</h2>
     <p><strong>Meny och matupplevelse:</strong></p>
     <ul>
@@ -164,6 +154,9 @@
     </ul>
 </div>
 <div class="slide" id="slide5" style="transform: translateX(400%);">
+    <video autoplay loop muted playsinline>
+        <source src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ" type="video/mp4">
+    </video>
     <h2>Marknadsundersökning</h2>
     <p><strong>Identifierade Luckor:</strong></p>
     <ul>
@@ -173,6 +166,9 @@
     </ul>
 </div>
 <div class="slide" id="slide6" style="transform: translateX(500%);">
+    <video autoplay loop muted playsinline>
+        <source src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ" type="video/mp4">
+    </video>
     <h2>Konkurrensanalys</h2>
     <p><strong>Gästnöjdhet:</strong></p>
     <ul>
@@ -189,13 +185,6 @@
 <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
-    const video = document.getElementById('video');
-    const startButton = document.getElementById('startButton');
-
-    function startPresentation() {
-        video.src = video.src.replace('mute=1', 'mute=0');
-        startButton.style.display = 'none';
-    }
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
