@@ -60,6 +60,7 @@
             width: 100%;
             display: flex;
             justify-content: center;
+            z-index: 10;
         }
         .navigation button {
             background: #ff9800;
@@ -116,11 +117,9 @@
 </head>
 <body>
 
-<div class="background-video" id="backgroundVideo" style="display: none;">
-    <iframe id="video" src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ&mute=0&playsinline=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+<div class="background-video" id="backgroundVideo">
+    <iframe id="video" src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ&playsinline=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
 </div>
-
-<button class="start-button" id="startButton" onclick="startPresentation()">Starta presentation</button>
 
 <div class="slide" id="slide1" style="transform: translateX(0%);">
     <h1>BON – Vision, Förbättringar och Förslag</h1>
@@ -189,15 +188,6 @@
 <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
-    const videoContainer = document.getElementById('backgroundVideo');
-    const startButton = document.getElementById('startButton');
-
-    function startPresentation() {
-        videoContainer.style.display = 'block';
-        startButton.style.display = 'none';
-        const video = document.getElementById('video');
-        video.src += "&autoplay=1";
-    }
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
@@ -224,6 +214,7 @@
 
 </body>
 </html>
+
 
 
 
