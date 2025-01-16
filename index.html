@@ -70,6 +70,23 @@
             background-size: contain;
             animation: skiMove 8s linear infinite;
         }
+        .final-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            width: 100vw;
+            height: 100vh;
+            transition: transform 0.5s ease;
+        }
+        .final-slide img {
+            width: 50%;
+            height: auto;
+            animation: zoomIn 5s infinite alternate;
+        }
         @keyframes skiMove {
             0% {
                 left: -150px;
@@ -81,6 +98,14 @@
             100% {
                 left: 110%;
                 transform: translateY(0);
+            }
+        }
+        @keyframes zoomIn {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.2);
             }
         }
     </style>
@@ -145,7 +170,9 @@
         <li>Populära under högsäsong.</li>
     </ul>
 </div>
-
+<div class="final-slide" id="finalSlide">
+    <img src="https://appstickers-cdn.appadvice.com/766470012/838175237/c5c03012c4cbbebbc8b52e2e72b045f7-5.png" alt="Valle" />
+</div>
 <div class="ski-animation"></div>
 
 <div class="navigation">
@@ -156,15 +183,21 @@
 <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
+    const finalSlide = document.getElementById('finalSlide');
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
             slide.style.transform = `translateX(${(i - index) * 100}%)`;
         });
+        if (index >= slides.length) {
+            finalSlide.style.transform = 'translateX(0)';
+        } else {
+            finalSlide.style.transform = 'translateX(100%)';
+        }
     }
 
     function nextSlide() {
-        if (currentSlide < slides.length - 1) {
+        if (currentSlide <= slides.length) {
             currentSlide++;
             showSlide(currentSlide);
         }
@@ -182,6 +215,7 @@
 
 </body>
 </html>
+
 
 
 
