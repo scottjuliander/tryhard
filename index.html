@@ -75,21 +75,6 @@
         .navigation button:hover {
             background: #e68a00;
         }
-        .start-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #ff9800;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-        }
 
         @media (max-width: 768px) {
             .slide {
@@ -117,8 +102,8 @@
 </head>
 <body>
 
-<div class="background-video" id="backgroundVideo">
-    <iframe id="video" src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ&playsinline=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+<div class="background-video">
+    <iframe id="video" src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ&playsinline=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
 </div>
 
 <div class="slide" id="slide1" style="transform: translateX(0%);">
@@ -214,6 +199,8 @@
 
 </body>
 </html>
+
+
 
 
 
