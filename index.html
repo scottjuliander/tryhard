@@ -75,6 +75,20 @@
         .navigation button:hover {
             background: #e68a00;
         }
+        .start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
 
         @media (max-width: 768px) {
             .slide {
@@ -105,6 +119,8 @@
 <div class="background-video">
     <iframe id="video" src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ&playsinline=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
 </div>
+
+<button class="start-button" id="startButton" onclick="startPresentation()">Starta presentation</button>
 
 <div class="slide" id="slide1" style="transform: translateX(0%);">
     <h1>BON – Vision, Förbättringar och Förslag</h1>
@@ -173,6 +189,13 @@
 <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
+    const video = document.getElementById('video');
+    const startButton = document.getElementById('startButton');
+
+    function startPresentation() {
+        video.src = video.src.replace('mute=1', 'mute=0');
+        startButton.style.display = 'none';
+    }
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
@@ -199,6 +222,7 @@
 
 </body>
 </html>
+
 
 
 
