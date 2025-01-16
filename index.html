@@ -11,6 +11,7 @@
             padding: 0;
             color: white;
             overflow: hidden;
+            background: black;
         }
         .background-video {
             position: fixed;
@@ -73,6 +74,21 @@
         .navigation button:hover {
             background: #e68a00;
         }
+        .start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+        }
 
         @media (max-width: 768px) {
             .slide {
@@ -81,9 +97,6 @@
             }
             .slide h1, .slide h2 {
                 font-size: 1.5rem;
-            }
-            .slide ul {
-                padding-left: 1rem;
             }
             .navigation button {
                 padding: 8px 15px;
@@ -103,9 +116,11 @@
 </head>
 <body>
 
-<div class="background-video">
-    <iframe src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ" frameborder="0" allow="autoplay; fullscreen"></iframe>
+<div class="background-video" id="backgroundVideo" style="display: none;">
+    <iframe id="video" src="https://www.youtube.com/embed/bzBaTpE-mVQ?autoplay=1&loop=1&playlist=bzBaTpE-mVQ&mute=0" frameborder="0" allow="autoplay; fullscreen"></iframe>
 </div>
+
+<button class="start-button" id="startButton" onclick="startPresentation()">Starta presentation</button>
 
 <div class="slide" id="slide1" style="transform: translateX(0%);">
     <h1>BON – Vision, Förbättringar och Förslag</h1>
@@ -174,6 +189,13 @@
 <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
+    const videoContainer = document.getElementById('backgroundVideo');
+    const startButton = document.getElementById('startButton');
+
+    function startPresentation() {
+        videoContainer.style.display = 'block';
+        startButton.style.display = 'none';
+    }
 
     function showSlide(index) {
         slides.forEach((slide, i) => {
@@ -200,6 +222,7 @@
 
 </body>
 </html>
+
 
 
 
