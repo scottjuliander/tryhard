@@ -24,6 +24,9 @@
             padding: 2rem;
             position: absolute;
             transition: transform 0.5s ease;
+            background: rgba(0, 0, 0, 0.6);
+            border: 5px solid #ff9800;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
         .slide h1, .slide h2 {
             margin: 0 0 1rem;
@@ -56,6 +59,29 @@
         }
         .navigation button:hover {
             background: #e68a00;
+        }
+        .ski-animation {
+            position: fixed;
+            bottom: 0;
+            left: -100px;
+            width: 100px;
+            height: 100px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/4/45/Skiing_icon.svg') no-repeat center;
+            background-size: contain;
+            animation: skiMove 10s linear infinite;
+        }
+        @keyframes skiMove {
+            0% {
+                left: -100px;
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                left: 110%;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -120,6 +146,8 @@
     </ul>
 </div>
 
+<div class="ski-animation"></div>
+
 <div class="navigation">
     <button onclick="prevSlide()">Föregående</button>
     <button onclick="nextSlide()">Nästa</button>
@@ -154,5 +182,3 @@
 
 </body>
 </html>
-
-
